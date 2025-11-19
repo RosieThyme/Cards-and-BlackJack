@@ -193,8 +193,8 @@ public:
         standButton = new QPushButton("Stand", this);
 
         // Button Styling
-        QString btnStyle = "QPushButton { background-color: #f0f0f0; border-radius: 5px; padding: 10px; font-weight: bold; }"
-                           "QPushButton:hover { background-color: #e0e0e0; }"
+        QString btnStyle = "QPushButton { background-color: #5B618A; border-radius: 5px; padding: 10px; font-weight: bold; }"
+                           "QPushButton:hover { background-color: #B9E28C; color: #AB2346 }"
                            "QPushButton:disabled { background-color: #a0a0a0; color: #505050; }";
         dealButton->setStyleSheet(btnStyle);
         hitButton->setStyleSheet(btnStyle);
@@ -278,6 +278,7 @@ public:
     void startRound() {
         currentBet = 100;
         if (balance < currentBet) {
+            statusLabel->setStyleSheet("color: #88292F; font-size: 18px; font-weight: bold; background-color: rgba(139,0,0,0.3); padding: 10px; border-radius: 5px;");
             statusLabel->setText("Not enough money! Game Over.");
             return;
         }
@@ -302,7 +303,10 @@ public:
 
         // Check Natural Blackjack
         if (playerHand.getTotal() == 21) {
+            statusLabel->setStyleSheet("color: #88292F; font-size: 18px; font-weight: bold; background-color: rgba(139,0,0,0.3); padding: 10px; border-radius: 5px;");
             endRound("Blackjack! You Win!", 2.5); // 3:2 payout + original bet return logic
+                    statusLabel->setStyleSheet(
+            "color: yellow; font-size: 18px; font-weight: bold; background-color: rgba(0,0,0,0.3); padding: 10px; border-radius: 5px;");
         }
     }
 
